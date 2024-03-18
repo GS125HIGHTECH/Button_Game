@@ -21,10 +21,10 @@ body {
   margin-bottom: 60px;
 }
 
-#allMatch {
-    text-align:center;
-    padding:15px;
-    margin-top:5px;
+#messageArea {
+    text-align: center;
+    padding: 15px;
+    margin-top: 5px;
 }
 
 .game-button {

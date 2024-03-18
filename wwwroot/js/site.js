@@ -15,27 +15,9 @@
             },
             success: function (data) {
 
-                $("#" + buttonNumber).html(data);
+                $("#" + buttonNumber).html(data.part1);
+                $("#messageArea").html(data.part2);
             }
         })
-        $.ajax({
-            url: "/button/GetModelData",
-            method: "GET",
-            dataType: "json",
-            success: function (data) {
-                var allGreen = checkAllButtonsGreen(data);
-                if (allGreen) {
-                    $("#allMatch").text("Congratulations. All buttons are green!");
-                } else {
-                    $("#allMatch").text("Not all buttons are green. See if you can make them all match.");
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error("Error fetching model data:", textStatus, errorThrown);
-            }
-        });
-    }
-    function checkAllButtonsGreen(modelData) {
-        return modelData.every(button => button.buttonState === 0);
     }
 })
