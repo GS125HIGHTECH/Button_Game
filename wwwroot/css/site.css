@@ -20,3 +20,36 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#allMatch {
+    text-align:center;
+    padding:15px;
+    margin-top:5px;
+}
+
+.game-button {
+    width: 120px;
+    text-align: center;
+    border: none;
+    background: none;
+}
+
+.button-zone {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.line-break {
+    height: 0;
+    flex-basis: 100%
+}
+
+.button-label {
+    font-size: 8px;
+    text-align: center;
+}
+
+.game-button-image {
+    width: 70%
+}

@@ -28,5 +28,17 @@ namespace ButtonGrid.Controllers
 
             return View("Index", buttons);
         }
+
+        public IActionResult ShowOneButton(int buttonNumber)
+        {
+            buttons.ElementAt(buttonNumber).ButtonState = (buttons.ElementAt(buttonNumber).ButtonState + 1) % 4;
+
+            return PartialView(buttons.ElementAt(buttonNumber));
+        }
+
+        public IActionResult GetModelData()
+        {
+            return Json(buttons);
+        }
     }
 }
