@@ -54,7 +54,37 @@ namespace ButtonGrid.Controllers
             }
             else
             {
-                messageString = "<p>Not all buttons are green. See if you can make them all match.</p>";
+                messageString = "<p>Not all buttons are the same color. See if you can make them all match.</p>";
+            }
+
+            var package = new { part1 = buttonString, part2 = messageString };
+
+            return Json(package);
+        }
+
+        public IActionResult RightClickOneButton(int buttonNumber)
+        {
+            buttons.ElementAt(buttonNumber).ButtonState = 1;
+            string buttonString = RenderRazorViewToString(this, "ShowOneButton", buttons.ElementAt(buttonNumber));
+
+            bool DidWinYet = true;
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                if (buttons.ElementAt(i).ButtonState != buttons.ElementAt(0).ButtonState)
+                {
+                    DidWinYet = false;
+                }
+            }
+
+            string messageString = "";
+
+            if (DidWinYet)
+            {
+                messageString = "<p>Congratulations. All of the buttons are the same color</p>";
+            }
+            else
+            {
+                messageString = "<p>Not all buttons are the same color. See if you can make them all match.</p>";
             }
 
             var package = new { part1 = buttonString, part2 = messageString };

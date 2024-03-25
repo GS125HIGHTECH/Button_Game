@@ -1,15 +1,32 @@
 ﻿$(function () {
-    $(document).on("click", ".game-button", function (event) {
+    $(document).on("mousedown", ".game-button", function (event) {
         event.preventDefault();
-        var buttonNumber = $(this).val();
-        doButtonUpdate(buttonNumber);
+        switch (event.which) {
+            case 1:
+                var buttonNumber = $(this).val();
+                doButtonUpdate(buttonNumber, "button/ShowOneButton");
+                break;
+            case 2:
+                break;
+            case 3:
+                var buttonNumber = $(this).val();
+                doButtonUpdate(buttonNumber, "button/RightClickOneButton");
+                break;
+            default:
+                alert("Nothing");
+        }
     })
 
-    function doButtonUpdate(buttonNumber) {
+    $(document).bind("contextmenu", function (e) {
+        e.preventDefault();
+       
+    })
+
+    function doButtonUpdate(buttonNumber, urlString) {
         $.ajax({
             datatype: "json",
             method: "POST",
-            url: "/button/ShowOneButton",
+            url: urlString,
             data: {
                 "buttonNumber": buttonNumber
             },
